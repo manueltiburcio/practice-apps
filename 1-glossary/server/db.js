@@ -11,7 +11,6 @@ let wordSchema = mongoose.Schema({
   definition: String,
 })
 
-
 const Word = mongoose.model('Word', wordSchema);
 
 let save = (name, definition) => {
@@ -26,22 +25,6 @@ let erase = (id) => {
     console.log('entry deleted');
   })
 }
-
-// word.find is document query
-// const wordEntry = new Word(
-//   {
-//     id: 3,
-//     name: 'whiteboarding',
-//     definition: 'process of brainstorming solutions on a blank space',
-//   }
-// );
-// wordEntry.save();
-
-//const words = Word.find();
-//console.log(words);
-// words.then(response => {
-//   console.log('promise completed', response);
-// })
 
 module.exports.Word = Word;
 module.exports.save = save;
