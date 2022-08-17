@@ -5,9 +5,9 @@ const WordList = ( { words, handleDelete } ) => (
   <div>
     <ul>{words.map(word => {
       return (
-        <li key={word.id}>
-           {word.word}: {word.definition}
-           <button id={word.id} onClick={handleDelete}>del</button>
+        <li key={word._id}>
+           {word.name}: {word.definition}
+           <button id={word._id} onClick={handleDelete}>del</button>
         </li>
       )
     })}</ul>

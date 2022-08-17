@@ -71,7 +71,7 @@ class App extends React.Component {
             <input type="text" value={this.state.wordInput} onChange={this.handleChange} id="wordInput"/>
           </label>
           <label>
-            definition:
+            Definition:
             <input type="text" value={this.state.definitionInput} onChange={this.handleChange} id="definitionInput"/>
           </label>
           <input type="submit" value="Submit" />

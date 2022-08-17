@@ -32,7 +32,6 @@ app.get(`/${process.env.DB_NAME}`, (req, res) => {
 })
 
 app.delete(`/${process.env.DB_NAME}`, (req, res) => {
-
   let id = req.body.id;
 
   erase(id);

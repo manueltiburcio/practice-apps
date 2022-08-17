@@ -7,7 +7,6 @@ mongoose.connect(`mongodb://localhost/${process.env.DB_NAME}`);
 // 4. Import the models into any modules that need them
 
 let wordSchema = mongoose.Schema({
-  id: Number,
   name: String,
   definition: String,
 })
@@ -15,22 +14,17 @@ let wordSchema = mongoose.Schema({
 
 const Word = mongoose.model('Word', wordSchema);
 
-
 let save = (name, definition) => {
    Word.create({
-    id: 10,
     name: name,
     definition: definition,
   })
 }
 
 let erase = (id) => {
-
-
   Word.deleteOne({id}).then(() => {
     console.log('entry deleted');
   })
-
 }
 
 // word.find is document query
