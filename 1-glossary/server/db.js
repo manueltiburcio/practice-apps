@@ -6,7 +6,7 @@ mongoose.connect(`mongodb://localhost/${process.env.DB_NAME}`);
 // 3. Export the models
 // 4. Import the models into any modules that need them
 
-const wordSchema = new Schema({
+let wordSchema = mongoose.Schema({
   id: Number,
   word: String,
   definition: String,
