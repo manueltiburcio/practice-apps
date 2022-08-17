@@ -5,7 +5,7 @@ const WordList = ( { words } ) => (
   <div>
     <ul>{words.map(word => {
       return (
-        <div key={word.id}> {word.word}: {word.definition}</div>
+        <li key={word.id}> {word.word}: {word.definition}</li>
       )
     })}</ul>
   </div>
