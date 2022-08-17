@@ -16,6 +16,7 @@ class App extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
 
   }
 
@@ -33,11 +34,31 @@ class App extends React.Component {
     this.setState({
       [e.target.id]: e.target.value,
     })
+
   }
 
   handleSubmit(e) {
     e.preventDefault();
     alert('something was submitted???');
+
+    axios.post('/glossary', {
+      name: this.state.wordInput,
+      definition: this.state.definitionInput,
+    }).then(response => {
+      console.log(response);
+    })
+  }
+
+
+  handleDelete(e){
+    let id = e.target.id;
+
+    axios.delete('/glossary/', {
+      data: {id: id},
+    }).then(() => {
+      console.log('deleted req sent');
+    })
+
   }
 
   render() {
@@ -56,7 +77,8 @@ class App extends React.Component {
           <input type="submit" value="Submit" />
         </form>
         <ul>Words in db: {this.state.wordCount}</ul>
-        <WordList words={this.state.wordList} />
+        <WordList words={this.state.wordList}
+        handleDelete={this.handleDelete}/>
       </React.Fragment>
     )
   }

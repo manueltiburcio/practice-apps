@@ -8,21 +8,29 @@ mongoose.connect(`mongodb://localhost/${process.env.DB_NAME}`);
 
 let wordSchema = mongoose.Schema({
   id: Number,
-  word: String,
+  name: String,
   definition: String,
 })
 
 
 const Word = mongoose.model('Word', wordSchema);
 
-// TODO pending function
-let save = (word, definition) => {
 
+let save = (name, definition) => {
    Word.create({
-    id: 0,
-    name: 'programming',
-    definition: 'the process or activity of writing computer programs',
+    id: 10,
+    name: name,
+    definition: definition,
   })
+}
+
+let erase = (id) => {
+
+
+  Word.deleteOne({id}).then(() => {
+    console.log('entry deleted');
+  })
+
 }
 
 // word.find is document query
@@ -43,3 +51,4 @@ let save = (word, definition) => {
 
 module.exports.Word = Word;
 module.exports.save = save;
+module.exports.erase = erase;
