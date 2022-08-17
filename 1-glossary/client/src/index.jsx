@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import WordList from './components/WordList.jsx';
+import Form from './components/Form.jsx';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -8,7 +9,7 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      wordCount: 0,
+      wordsCount: 0,
       wordList: [],
       wordInput: '',
       definitionInput: '',
@@ -49,7 +50,6 @@ class App extends React.Component {
     })
   }
 
-
   handleDelete(e){
     let id = e.target.id;
 
@@ -65,18 +65,8 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <h1>Glossary App</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Word:
-            <input type="text" value={this.state.wordInput} onChange={this.handleChange} id="wordInput"/>
-          </label>
-          <label>
-            Definition:
-            <input type="text" value={this.state.definitionInput} onChange={this.handleChange} id="definitionInput"/>
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
-        <ul>Words in db: {this.state.wordCount}</ul>
+        <Form handleSubmit={this.handleSubmit} handleChange={this.handleChange} wordInput={this.state.wordInput} definitionInput={this.state.definitionInput}/>
+        <ul>Words in db: {this.state.wordsCount}</ul>
         <WordList words={this.state.wordList}
         handleDelete={this.handleDelete}/>
       </React.Fragment>
