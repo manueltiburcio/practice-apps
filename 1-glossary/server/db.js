@@ -20,7 +20,7 @@ let save = (word, definition) => {
 
    Word.create({
     id: 0,
-    word: 'programming',
+    name: 'programming',
     definition: 'the process or activity of writing computer programs',
   })
 }
@@ -29,8 +29,8 @@ let save = (word, definition) => {
 // const wordEntry = new Word(
 //   {
 //     id: 3,
-//     word: 'whiteboarding',
-//     definition: 'process of brainstorming solutions to problems on a blank space',
+//     name: 'whiteboarding',
+//     definition: 'process of brainstorming solutions on a blank space',
 //   }
 // );
 // wordEntry.save();
