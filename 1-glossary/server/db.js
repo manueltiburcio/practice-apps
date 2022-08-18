@@ -20,6 +20,19 @@ let save = (name, definition) => {
   })
 }
 
+let update = (id, name, definition) => {
+
+  const filter = { _id: id };
+  const update = { name: name, definition: definition };
+
+  Word.findOneAndUpdate(filter, update, {
+    new: true
+  }).then(() => {
+    console.log('entry updated');
+  })
+
+}
+
 let erase = (id) => {
   Word.deleteOne({id}).then(() => {
     console.log('entry deleted');
@@ -28,4 +41,5 @@ let erase = (id) => {
 
 module.exports.Word = Word;
 module.exports.save = save;
+module.exports.update = update;
 module.exports.erase = erase;

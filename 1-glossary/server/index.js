@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const { Word, save, erase } = require('./db.js');
+const { Word, save, update, erase } = require('./db.js');
 
 const app = express();
 
@@ -22,6 +22,17 @@ app.post(`/${process.env.DB_NAME}`, (req, res) => {
   res.status(201).send('word entry added to the db');
 })
 
+// update entry
+app.put(`/${process.env.DB_NAME}`, (req, res) => {
+   let id = req.body._id;
+   let name = req.body.name;
+   let definition = req.body.definition;
+
+  update(id, name, definition);
+
+  res.status(200).send('entry updated');
+})
+
 // get from db all words
 app.get(`/${process.env.DB_NAME}`, (req, res) => {
 
@@ -33,19 +44,9 @@ app.get(`/${process.env.DB_NAME}`, (req, res) => {
 
 app.delete(`/${process.env.DB_NAME}`, (req, res) => {
   let id = req.body.id;
-
   erase(id);
-
   res.status(200).send('Got a DELETE request');
 })
-
-/****
- *
- *
- * Other routes here....
- *
- *
- */
 
 app.listen(process.env.PORT);
 console.log(`Listening at http://localhost:${process.env.PORT}`);
