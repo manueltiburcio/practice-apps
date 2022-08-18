@@ -27,15 +27,19 @@ class App extends React.Component {
 
   }
 
-  componentDidMount() {
+  getData() {
     axios.get('/glossary')
-      .then((response) => {
-        this.setState({
-          wordsCount: response.data.length,
-          wordList: response.data,
-          currentList: response.data,
-        })
+    .then((response) => {
+      this.setState({
+        wordsCount: response.data.length,
+        wordList: response.data,
+        currentList: response.data,
       })
+    })
+  }
+
+  componentDidMount() {
+    this.getData();
   }
 
   handleHome() {
@@ -84,7 +88,10 @@ class App extends React.Component {
       definition: this.state.definitionInput,
     }).then(response => {
       console.log(response);
+    }).then(() => {
+      this.getData();
     })
+
 
   }
 
@@ -95,7 +102,10 @@ class App extends React.Component {
       data: {id: id},
     }).then(() => {
       console.log('deleted req sent');
+    }).then(() => {
+      this.getData();
     })
+
 
   }
 
@@ -109,7 +119,10 @@ class App extends React.Component {
       definition: this.state.definitionInput,
     }).then(response => {
       console.log(response);
+    }).then(() => {
+      this.getData();
     })
+
 
   }
 
