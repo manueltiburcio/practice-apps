@@ -4,6 +4,7 @@ USE checkout;
 CREATE TABLE f1 (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(50),
+  email VARCHAR(50),
   password VARCHAR(50),
   PRIMARY KEY (id)
 );
